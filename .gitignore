@@ -1,0 +1,15 @@
+# Python virtual environment
+vitatrace-env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+
+# Data (optional – see note below)
+data/audio/*
+data/xrays/*
+data/reports/*
