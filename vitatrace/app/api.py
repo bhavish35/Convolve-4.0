@@ -64,3 +64,28 @@ def emergency_mode(
         "critical_info": evidence,
         "warning": "Emergency access granted and logged"
     }
+
+@app.post("/add_memory")
+def add_patient_memory(
+    patient_id: str = Body(...),
+    text: str = Body(...),
+    category: str = Body(...),
+    critical: bool = Body(False),
+    date: str | None = Body(None)
+):
+    """
+    Add a new memory record for a patient
+    """
+
+    memory = store_memory(
+        patient_id=patient_id,
+        text=text,
+        category=category,
+        critical=critical,
+        date=date
+    )
+
+    return {
+        "status": "stored",
+        "memory": memory
+    }
