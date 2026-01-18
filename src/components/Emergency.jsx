@@ -1,63 +1,112 @@
 import { useState } from "react";
 import { requestOTP, verifyOTP } from "../api";
+import { styles } from "../styles";
 
-export default function EmergencyAccess() {
+export default function Emergency() {
   const [patientId, setPatientId] = useState("");
   const [otp, setOtp] = useState("");
   const [demoOtp, setDemoOtp] = useState(null);
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function handleOTP() {
-    const data = await requestOTP(patientId);
-    setDemoOtp(data.otp);
-    setResult(null);
+    setLoading(true);
+    try {
+      const data = await requestOTP(patientId);
+      setDemoOtp(data.otp);
+      setResult(null);
+    } catch (error) {
+      alert("Error generating OTP");
+    }
+    setLoading(false);
   }
 
   async function handleEmergency() {
-    const data = await verifyOTP(patientId, otp);
-    setResult(data);
+    setLoading(true);
+    try {
+      const data = await verifyOTP(patientId, otp);
+      setResult(data);
+    } catch (error) {
+      alert("Error verifying OTP");
+    }
+    setLoading(false);
   }
 
   return (
-    <div>
-      <h3>🚑 Emergency Access</h3>
+    <div style={styles.emergencyCard}>
+      <div style={styles.cardHeader}>
+        <div style={{...styles.cardIcon, ...styles.iconRed}}>🛡️</div>
+        <h2 style={styles.cardTitle}>🚨 Emergency Access</h2>
+      </div>
 
-      <input
-        placeholder="Patient ID"
-        value={patientId}
-        onChange={(e) => setPatientId(e.target.value)}
-      />
+      <div style={styles.formGroup}>
+        <label style={styles.label}>Patient ID</label>
+        <input
+          type="text"
+          placeholder="Enter patient ID"
+          value={patientId}
+          onChange={(e) => setPatientId(e.target.value)}
+          style={styles.input}
+        />
+      </div>
 
-      <button onClick={handleOTP}>Generate OTP</button>
+      <button
+        onClick={handleOTP}
+        disabled={loading}
+        style={{...styles.button, ...styles.btnOrange}}
+      >
+        🔐 {loading ? "Generating..." : "Generate OTP"}
+      </button>
 
       {demoOtp && (
-        <p style={{ color: "yellow" }}>
-          🔐 Demo OTP: <b>{demoOtp}</b>
-        </p>
+        <div style={styles.otpDisplay}>
+          <p style={styles.otpLabel}>🔐 Demo OTP:</p>
+          <p style={styles.otpValue}>{demoOtp}</p>
+        </div>
       )}
 
-      <input
-        placeholder="Enter OTP"
-        value={otp}
-        onChange={(e) => setOtp(e.target.value)}
-      />
+      <div style={styles.formGroup}>
+        <label style={styles.label}>Enter OTP</label>
+        <input
+          type="text"
+          placeholder="Enter 6-digit OTP"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+          style={{...styles.input, textAlign: 'center', fontSize: '18px', letterSpacing: '3px'}}
+        />
+      </div>
 
-      <button onClick={handleEmergency}>Emergency Access</button>
+      <button
+        onClick={handleEmergency}
+        disabled={loading}
+        style={{...styles.button, ...styles.btnRed}}
+      >
+        {loading ? "Verifying..." : "Emergency Access"}
+      </button>
 
       {result?.error && (
-        <p style={{ color: "red" }}>❌ {result.error}</p>
+        <div style={styles.alertError}>
+          <p>❌ {result.error}</p>
+        </div>
       )}
 
       {result?.critical_info && (
-        <ul>
-          {result.critical_info.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
+        <div style={styles.criticalInfo}>
+          <h3 style={styles.resultsTitle}>Critical Information:</h3>
+          <div>
+            {result.critical_info.map((item, i) => (
+              <div key={i} style={styles.criticalItem}>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
 
       {result?.warning && (
-        <p style={{ color: "orange" }}>{result.warning}</p>
+        <div style={styles.alertWarning}>
+          <p>{result.warning}</p>
+        </div>
       )}
     </div>
   );
