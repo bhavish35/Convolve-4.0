@@ -22,7 +22,7 @@ def init_collection():
     else:
         print("Collection already exists")
 
-def store_memory(vector, payload, collection_name="patient_text_memory"):
+def store_non_txt_memory(vector, payload, collection_name="patient_text_memory"):
     client.upsert(
         collection_name=collection_name,
         points=[
@@ -33,4 +33,22 @@ def store_memory(vector, payload, collection_name="patient_text_memory"):
             )
         ]
     )
+
+def store_memory(vector: list[float], payload: dict):
+    """
+    Stores a single memory point in Qdrant
+    """
+    point = PointStruct(
+        id=str(uuid.uuid4()),
+        vector=vector,
+        payload=payload
+    )
+
+    client.upsert(
+        collection_name="patient_text_memory",
+        points=[point]
+    )
+
+    return payload
+
 
