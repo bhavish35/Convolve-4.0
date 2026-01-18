@@ -16,11 +16,9 @@ export async function queryMemory(patient_id, query) {
   return res.json();
 }
 
-const BASE = "http://127.0.0.1:8000";
-
 export async function requestOTP(patient_id) {
   const res = await fetch(
-    `${BASE}/emergency/request-otp?patient_id=${patient_id}`,
+    `${BASE_URL}/emergency/request-otp?patient_id=${patient_id}`,
     { method: "POST" }
   );
   return res.json();
@@ -28,10 +26,8 @@ export async function requestOTP(patient_id) {
 
 export async function verifyOTP(patient_id, otp) {
   const res = await fetch(
-    `${BASE}/emergency/verify?patient_id=${patient_id}&otp=${otp}`,
+    `${BASE_URL}/emergency/verify?patient_id=${patient_id}&otp=${otp}`,
     { method: "POST" }
   );
   return res.json();
 }
-
-  
