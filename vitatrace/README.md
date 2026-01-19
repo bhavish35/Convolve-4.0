@@ -37,6 +37,56 @@ npm run dev
 Frontend: http://localhost:5173
 
 ---
+### Template to store audio in vectorbase
+```bash
+python - << 'EOF'
+from app.audio import transcribe_audio
+from app.embeddings import embed_text
+from app.ingest import store_memory
+
+text = transcribe_audio("audio_path")
+vec = embed_text(text)
+
+store_memory(
+    vec,
+    payload={
+        "patient_id": "P001",
+        "modality": "audio",
+        "category": "emergency_note",
+        "date": "2024-01-18",
+        "summary": text[:200],
+        "critical": True
+    }
+)
+EOF
+```
+
+### Template to store image in vectorbase
+```bash
+python - << 'EOF'
+from app.embeddings import embed_image
+from app.ingest import store_memory
+
+# Step 1: Embed image
+vec = embed_image("data/xrays/chest_xray_001.jpg")
+
+# Step 2: Store in patient memory
+store_memory(
+    vec,
+    payload={
+        "patient_id": "P001",
+        "modality": "image",
+        "category": "xray",
+        "date": "2024-01-15",
+        "summary": "Chest X-ray indicating possible lung infection",
+        "critical": False
+    }
+)
+
+print("Image memory stored successfully")
+EOF
+
+```
 
 ## 🌍 Why VitaTrace?
 
