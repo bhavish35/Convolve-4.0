@@ -5,35 +5,42 @@
 ---
 
 vitatrace/
-│
-├── app/                      # Backend (FastAPI)
+├── app/                     # Backend (FastAPI)
+│   ├── __init__.py
 │   ├── api.py
 │   ├── embeddings.py
 │   ├── ingest.py
 │   ├── search.py
 │   ├── reasoning.py
+│   └── audio.py
 │
-├── data/                     # Sample data (optional)
+├── data/                    # Sample data (optional)
 │   ├── reports/
 │   ├── xrays/
 │   └── audio/
 │
-├── frontend/                 # Frontend (React + Vite)
+├── frontend/                # Frontend (React + Vite)
 │   ├── src/
 │   │   ├── components/
+│   │   ├── assets/
+│   │   ├── api.js
 │   │   ├── App.jsx
 │   │   ├── main.jsx
-│   │   └── styles.css
+│   │   ├── styles.js
+│   │   └── index.css
+│   │
 │   ├── index.html
 │   ├── package.json
 │   ├── package-lock.json
-│   └── vite.config.js
+│   ├── vite.config.js
+│   └── README.md
 │
-├── requirements.txt          # Backend dependencies
-├── README.md                 # How to Run
-├── .gitignore                # Ignore system & build files
-└── .env.example              # (optional) env template
+├── requirements.txt         # Backend dependencies
+├── .gitignore
+└── README.md                # Project documentation
 
+
+---
 
 ## 🌍 Why VitaTrace?
 
