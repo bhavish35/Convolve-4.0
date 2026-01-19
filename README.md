@@ -37,7 +37,7 @@ vitatrace/
 │
 ├── requirements.txt         # Backend dependencies
 ├── .gitignore
-└── README.md                # Project documentation
+└── README.md                # Project documentation to run
 
 ```
 ---
