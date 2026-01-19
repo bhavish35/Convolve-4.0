@@ -3,7 +3,7 @@
 ### A Multimodal Patient Memory System for Smarter Healthcare
 
 ---
-
+```text
 vitatrace/
 ├── app/                     # Backend (FastAPI)
 │   ├── __init__.py
@@ -39,7 +39,7 @@ vitatrace/
 ├── .gitignore
 └── README.md                # Project documentation
 
-
+```
 ---
 
 ## 🌍 Why VitaTrace?
