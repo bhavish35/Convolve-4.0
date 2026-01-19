@@ -1,7 +1,36 @@
 # 🧠 VitaTrace  
 ### A Multimodal Patient Memory System for Safer, Smarter Healthcare
 
+--
+
+### 🔧 Tech Stack
+- FastAPI (Backend)
+- Qdrant (Vector DB)
+- SentenceTransformers
+- React + Vite (Frontend)
+
 ---
+
+## 🚀 How to Run 
+
+### 1️⃣ Start Qdrant
+docker run -p 6333:6333 qdrant/qdrant
+
+### 2️⃣ Backend
+python -m venv vitatrace-env
+source vitatrace-env/bin/activate
+pip install -r requirements.txt
+uvicorn app.api:app --reload
+
+Backend: http://127.0.0.1:8000  
+Swagger: http://127.0.0.1:8000/docs
+
+### 3️⃣ Frontend
+cd frontend
+npm install
+npm run dev
+
+Frontend: http://localhost:5173
 
 ## 🌍 Why VitaTrace?
 
