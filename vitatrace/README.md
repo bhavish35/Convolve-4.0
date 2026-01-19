@@ -88,6 +88,10 @@ EOF
 
 ```
 
+---
+For text memory you can go to frontend
+---
+
 ## 🌍 Why VitaTrace?
 
 In real healthcare settings, doctors often face situations like:
