@@ -4,6 +4,37 @@
 
 ---
 
+vitatrace/
+│
+├── app/                      # Backend (FastAPI)
+│   ├── api.py
+│   ├── embeddings.py
+│   ├── ingest.py
+│   ├── search.py
+│   ├── reasoning.py
+│
+├── data/                     # Sample data (optional)
+│   ├── reports/
+│   ├── xrays/
+│   └── audio/
+│
+├── frontend/                 # Frontend (React + Vite)
+│   ├── src/
+│   │   ├── components/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
+│
+├── requirements.txt          # Backend dependencies
+├── README.md                 # How to Run
+├── .gitignore                # Ignore system & build files
+└── .env.example              # (optional) env template
+
+
 ## 🌍 Why VitaTrace?
 
 In real healthcare system, doctors often face situations like:
