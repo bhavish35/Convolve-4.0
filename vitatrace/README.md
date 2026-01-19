@@ -14,6 +14,7 @@
 ## 🚀 How to Run 
 
 ### 1️⃣ Start Qdrant
+```bash
 docker run -p 6333:6333 qdrant/qdrant
 
 ### 2️⃣ Backend
@@ -22,13 +23,16 @@ source vitatrace-env/bin/activate
 pip install -r requirements.txt
 uvicorn app.api:app --reload
 
+```
 Backend: http://127.0.0.1:8000  
 Swagger: http://127.0.0.1:8000/docs
 
 ### 3️⃣ Frontend
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 Frontend: http://localhost:5173
 
