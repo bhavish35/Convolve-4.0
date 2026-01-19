@@ -1,7 +1,7 @@
 # 🧠 VitaTrace  
 ### A Multimodal Patient Memory System for Safer, Smarter Healthcare
 
---
+---
 
 ### 🔧 Tech Stack
 - FastAPI (Backend)
@@ -31,6 +31,8 @@ npm install
 npm run dev
 
 Frontend: http://localhost:5173
+
+---
 
 ## 🌍 Why VitaTrace?
 
@@ -165,19 +167,3 @@ The system is designed to **fail safely**.
 
 ---
 
-## 🚀 How to Run
-
-```bash
-# Start Qdrant
-docker run -p 6333:6333 qdrant/qdrant
-
-# Activate environment
-source vitatrace-env/bin/activate
-
-# Start API
-uvicorn app.api:app --reload
-
-# Swagger UI
-http://127.0.0.1:8000/docs
-
----
