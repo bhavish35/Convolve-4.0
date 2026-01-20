@@ -41,7 +41,8 @@ vitatrace/
 
 ```
 ---
-
+NOTE : Instructions to run are inside vitatrace folder README.md
+---
 ## 🌍 Why VitaTrace?
 
 In real healthcare system, doctors often face situations like:
