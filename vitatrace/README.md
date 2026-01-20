@@ -62,7 +62,7 @@ store_memory(
         "date": "2024-01-18",
         "summary": text[:200],
         "critical": True
-    }
+    },patient_audio_memory
 )
 EOF
 ```
@@ -86,7 +86,7 @@ store_memory(
         "date": "2024-01-15",
         "summary": "Chest X-ray indicating possible lung infection",
         "critical": False
-    }
+    },patient_image_memory
 )
 
 print("Image memory stored successfully")
@@ -95,6 +95,7 @@ EOF
 ```
 
 ---
+I have done it in frontend just for demo
 For text memory you can go to frontend
 ---
 
