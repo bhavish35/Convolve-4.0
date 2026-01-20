@@ -16,11 +16,17 @@
 ### 1️⃣ Start Qdrant
 ```bash
 docker run -p 6333:6333 qdrant/qdrant
-
+```
 ### 2️⃣ Backend
+```bash
 python -m venv vitatrace-env
 source vitatrace-env/bin/activate
 pip install -r requirements.txt
+
+cd vitatrace/app
+python3 create_collections.py
+
+cd ..
 uvicorn app.api:app --reload
 
 ```
